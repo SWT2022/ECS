@@ -1,12 +1,10 @@
-﻿namespace ECS.Legacy
-{
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-    interface IHeater
-    {
-        void TurnOn();
-        void TurnOff();
-    }
-    public class Heater : IHeater
+namespace ECS.Legacy
+{
+    internal class FakeHeater
     {
         public void TurnOn()
         {
