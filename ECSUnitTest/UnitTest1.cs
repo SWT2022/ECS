@@ -14,6 +14,7 @@ namespace ECSUnitTest
         {
             tempSensor = new FakeTempSensor();
             heater = new FakeHeater();
+            //hello
         }
 
         [Test]
