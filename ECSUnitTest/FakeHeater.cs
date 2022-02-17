@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ECS.Legacy
+namespace ReDesignECS
 {
-    internal class FakeHeater
+    internal class FakeHeater : IHeater
     {
+        public bool state;
         public void TurnOn()
         {
-            System.Console.WriteLine("Heater is on");
+            state = true;
         }
 
         public void TurnOff()
         {
-            System.Console.WriteLine("Heater is off");
+            state = false;
         }
 
         public bool RunSelfTest()

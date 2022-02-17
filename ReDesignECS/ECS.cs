@@ -3,19 +3,17 @@ using ReDesignECS;
 
 namespace ReDesignECS
 {
-
-
     public class ECS
     {
         private int _threshold;
         private readonly ITempSensor _tempSensor;
-        private readonly Heater _heater;
+        private readonly IHeater _heater;
 
-        public ECS(int thr, ITempSensor tempSensor)
+        public ECS(int thr, ITempSensor tempSensor, IHeater heater)
         {
             SetThreshold(thr);
             _tempSensor = tempSensor;
-            _heater = new Heater();
+            _heater = heater;
         }
 
         public void Regulate()
