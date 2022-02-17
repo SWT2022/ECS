@@ -1,16 +1,9 @@
 ﻿namespace ReDesignECS
 {
 
-    interface IHeater
-    { 
-        void TurnOn();
-        void TurnOff();
-    }
 
-    public class Heater: IHeater
+    public class Heater
     {
-
-
         public void TurnOn()
         {
             System.Console.WriteLine("Heater is on");

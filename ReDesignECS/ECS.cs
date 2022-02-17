@@ -1,4 +1,5 @@
 ﻿using System;
+using ReDesignECS;
 
 namespace ReDesignECS
 {
@@ -7,13 +8,13 @@ namespace ReDesignECS
     public class ECS
     {
         private int _threshold;
-        private readonly TempSensor _tempSensor;
+        private readonly ITempSensor _tempSensor;
         private readonly Heater _heater;
 
-        public ECS(int thr)
+        public ECS(int thr, ITempSensor tempSensor)
         {
             SetThreshold(thr);
-            _tempSensor = new TempSensor();
+            _tempSensor = tempSensor;
             _heater = new Heater();
         }
 

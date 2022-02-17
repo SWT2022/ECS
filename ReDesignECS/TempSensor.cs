@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using ReDesignECS;
 
 namespace ReDesignECS
 {
-    internal class FakeTempSensor : ITempSensor
+    internal class TempSensor: ITempSensor
     {
+        private Random gen = new Random();
+
         public int GetTemp()
         {
-            return 20;
+            return gen.Next(-5, 45);
         }
 
         public bool RunSelfTest()
         {
             return true;
         }
-
     }
 }
