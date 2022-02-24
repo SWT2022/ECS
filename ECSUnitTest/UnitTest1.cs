@@ -1,58 +1,70 @@
 
 using NUnit.Framework;
 using ReDesignECS;
+using NSubstitute;
 
 namespace ECSUnitTest
 {
     public class Tests
     {
         private ECS uut;
-        private FakeTempSensor tempSensor;
-        private FakeHeater heater;
+        private ITempSensor tempSensor;
+        private IHeater heater;
         [SetUp]
         public void Setup()
         {
-            tempSensor = new FakeTempSensor();
-            heater = new FakeHeater();
+            tempSensor = Substitute.For<ITempSensor>();
+            heater = Substitute.For<IHeater>();
+            uut = new ECS(15, tempSensor, heater);
+            //tempSensor = new FakeTempSensor();
+            //heater = new FakeHeater();
             //hello
         }
 
         [Test]
         public void Test_Temp_20_Heater_Off()
         {
-            //Arrange
-            uut = new ECS(10, tempSensor, heater);
 
-            //Act
+            tempSensor.GetTemp().Returns(20);
             uut.Regulate();
+            heater.Received(1).TurnOff();
+            ////Arrange
+            //uut = new ECS(10, tempSensor, heater);
 
-            //Assert
-            Assert.That(heater.state, Is.EqualTo(false));
+            ////Act
+            //uut.Regulate();
+
+            ////Assert
+            //Assert.That(heater.state, Is.EqualTo(false));
         }
 
         [Test]
         public void Test_Temp_2_Heater_On()
         {
-            //Arrange
-
-            uut = new ECS(30, tempSensor, heater);
-
-            //Act
+            tempSensor.GetTemp().Returns(2);
             uut.Regulate();
+            heater.Received(1).TurnOn();
 
-            //Assert
-            Assert.That(heater.state, Is.EqualTo(true));
+            ////Arrange
+
+            //uut = new ECS(30, tempSensor, heater);
+
+            ////Act
+            //uut.Regulate();
+
+            ////Assert
+            //Assert.That(heater.state, Is.EqualTo(true));
         }
         [Test]
         public void Test_GetCurTemp_20()
         {
-            //Arrange
+            ////Arrange
 
-            uut = new ECS(30, tempSensor, heater);
+            //uut = new ECS(30, tempSensor, heater);
 
-            //Act
-            //Assert
-            Assert.That(uut.GetCurTemp(), Is.EqualTo(20));
+            ////Act
+            ////Assert
+            //Assert.That(uut.GetCurTemp(), Is.EqualTo(20));
         }
     }
 }
