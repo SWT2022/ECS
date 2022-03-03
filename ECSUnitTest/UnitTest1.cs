@@ -71,7 +71,7 @@ namespace ECSUnitTest
         {
             // Arrange
             tempSensor.RunSelfTest().Returns(true);
-            tempSensor.RunSelfTest().Returns(true);
+            heater.RunSelfTest().Returns(true);
             // Assert
             Assert.That(uut.RunSelfTest, Is.True);
 
