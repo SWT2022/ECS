@@ -66,5 +66,15 @@ namespace ECSUnitTest
             ////Assert
             //Assert.That(uut.GetCurTemp(), Is.EqualTo(20));
         }
+        [Test]
+        public void RunSelfTest_TempSelfTestTrue_HeatSelfTestTrue()
+        {
+            // Arrange
+            tempSensor.RunSelfTest().Returns(true);
+            tempSensor.RunSelfTest().Returns(true);
+            // Assert
+            Assert.That(uut.RunSelfTest, Is.True);
+
+        }
     }
 }
